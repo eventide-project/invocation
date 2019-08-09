@@ -1,7 +1,7 @@
 require_relative 'automated_init'
 
-context "Positional Parameters" do
-  invocation = Invocation::Controls::Invocation.positional_parameters(11, 111)
+context "Named Parameters" do
+  invocation = Invocation::Controls::Invocation.named_parameters(some_parameter: 11, some_other_parameter: 111)
 
   test "Method name is recorded" do
     assert(invocation.method_name == :some_method)
