@@ -4,8 +4,6 @@ context "Mixed Parameters" do
   blk = proc { }
   invocation = Invocation::Controls::MixedParameters.example(11, 1111, 11111, some_other_parameter: 111, yet_another_parameter: 1111, additional_parameter: 11111, &blk)
 
-pp invocation
-
   test "Method name is recorded" do
     assert(invocation.method_name == :some_method)
   end
