@@ -1,7 +1,7 @@
 require_relative 'automated_init'
 
 context "Mixed Parameters" do
-  invocation = Invocation::Controls::Invocation.mixed_parameters(11, some_other_parameter: 111)
+  invocation = Invocation::Controls::MixedParameters.example(11, some_other_parameter: 111)
 
   test "Method name is recorded" do
     assert(invocation.method_name == :some_method)
