@@ -16,6 +16,11 @@ class Invocation
         subject.some_method(some_parameter: some_parameter, some_other_parameter: some_other_parameter)
       end
 
+      def self.mixed_parameters(some_parameter, some_other_parameter:)
+        subject = Subject::MixedParameters.new
+        subject.some_method(some_parameter, some_other_parameter: some_other_parameter)
+      end
+
       module Subject
         class NoParameters
           def some_method
@@ -31,6 +36,12 @@ class Invocation
 
         class NamedParameters
           def some_method(some_parameter:, some_other_parameter:)
+            ::Invocation.build(binding)
+          end
+        end
+
+        class MixedParameters
+          def some_method(some_parameter, some_other_parameter:)
             ::Invocation.build(binding)
           end
         end
