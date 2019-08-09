@@ -2,7 +2,7 @@ require_relative 'automated_init'
 
 context "Mixed Parameters" do
   blk = proc { }
-  invocation = Invocation::Controls::MixedParameters.example(11, 1111, 11111, some_other_parameter: 111, &blk)
+  invocation = Invocation::Controls::MixedParameters.example(11, 1111, 11111, some_other_parameter: 111, yet_another_parameter: 1111, additional_parameter: 11111, &blk)
 
 pp invocation
 
@@ -23,7 +23,7 @@ pp invocation
       end
     end
 
-    context "parameters" do
+    context "splat parameters" do
       param = invocation.parameters[1]
 
       test "Name" do
@@ -47,8 +47,20 @@ pp invocation
       end
     end
 
-    context "blk" do
+    context "double splat parameters" do
       param = invocation.parameters[3]
+
+      test "Name" do
+        assert(param.name == :named_parameters)
+      end
+
+      test "Value" do
+        assert(param.value == { yet_another_parameter: 1111, additional_parameter: 11111 })
+      end
+    end
+
+    context "blk" do
+      param = invocation.parameters[4]
 
       test "Name" do
         assert(param.name == :blk)

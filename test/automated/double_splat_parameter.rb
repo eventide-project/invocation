@@ -8,7 +8,7 @@ context "Splat Parameter" do
   end
 
   context "Parameters are recorded" do
-    context "The rest" do
+    context "splat parameters" do
       param = invocation.parameters[0]
 
       test "Name" do
