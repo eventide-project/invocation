@@ -27,10 +27,10 @@ param_1.value
 
 param_2 = invocation.parameters[1]
 
-param_1.name
+param_2.name
 # => :some_other_parameter
 
-param_1.value
+param_2.value
 # => 111
 ```
 
