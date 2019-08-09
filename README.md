@@ -40,7 +40,7 @@ A method signature with positional parameters, named parameters, splat parameter
 
 ``` ruby
 def some_method(some_parameter, *parameters, some_other_parameter:, **named_parameters, &blk)
-::Invocation.build(binding)
+  ::Invocation.build(binding)
 end
 ```
 
