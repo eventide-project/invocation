@@ -1,7 +1,10 @@
 require_relative 'automated_init'
 
 context "Mixed Parameters" do
-  invocation = Invocation::Controls::MixedParameters.example(11, some_other_parameter: 111)
+  blk = proc { }
+  invocation = Invocation::Controls::MixedParameters.example(11, some_other_parameter: 111, &blk)
+
+pp invocation
 
   test "Method name is recorded" do
     assert(invocation.method_name == :some_method)
@@ -29,6 +32,18 @@ context "Mixed Parameters" do
 
       test "Value" do
         assert(param.value == 111)
+      end
+    end
+
+    context "blk" do
+      param = invocation.parameters[2]
+
+      test "Name" do
+        assert(param.name == :blk)
+      end
+
+      test "Value" do
+        assert(param.value == blk)
       end
     end
   end
