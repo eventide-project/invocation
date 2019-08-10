@@ -9,26 +9,18 @@ context "Positional Parameters" do
 
   context "Parameters are recorded" do
     context "some_parameter" do
-      param = invocation.parameters[0]
-
-      test "Name" do
-        assert(param.name == :some_parameter)
-      end
+      value = invocation.parameters[:some_parameter]
 
       test "Value" do
-        assert(param.value == 11)
+        assert(value == 11)
       end
     end
 
     context "some_other_parameter" do
-      param = invocation.parameters[1]
-
-      test "Name" do
-        assert(param.name == :some_other_parameter)
-      end
+      value = invocation.parameters[:some_other_parameter]
 
       test "Value" do
-        assert(param.value == 111)
+        assert(value == 111)
       end
     end
   end

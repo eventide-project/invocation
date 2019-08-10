@@ -10,62 +10,42 @@ context "Mixed Parameters" do
 
   context "Parameters are recorded" do
     context "some_parameter" do
-      param = invocation.parameters[0]
-
-      test "Name" do
-        assert(param.name == :some_parameter)
-      end
+      value = invocation.parameters[:some_parameter]
 
       test "Value" do
-        assert(param.value == 11)
+        assert(value == 11)
       end
     end
 
     context "splat parameters" do
-      param = invocation.parameters[1]
-
-      test "Name" do
-        assert(param.name == :parameters)
-      end
+      value = invocation.parameters[:parameters]
 
       test "Value" do
-        assert(param.value == [1111, 11111])
+        assert(value == [1111, 11111])
       end
     end
 
     context "some_other_parameter" do
-      param = invocation.parameters[2]
-
-      test "Name" do
-        assert(param.name == :some_other_parameter)
-      end
+      value = invocation.parameters[:some_other_parameter]
 
       test "Value" do
-        assert(param.value == 111)
+        assert(value == 111)
       end
     end
 
     context "double splat parameters" do
-      param = invocation.parameters[3]
-
-      test "Name" do
-        assert(param.name == :named_parameters)
-      end
+      value = invocation.parameters[:named_parameters]
 
       test "Value" do
-        assert(param.value == { yet_another_parameter: 1111, additional_parameter: 11111 })
+        assert(value == { yet_another_parameter: 1111, additional_parameter: 11111 })
       end
     end
 
     context "blk" do
-      param = invocation.parameters[4]
-
-      test "Name" do
-        assert(param.name == :blk)
-      end
+      value = invocation.parameters[:blk]
 
       test "Value" do
-        assert(param.value == blk)
+        assert(value == blk)
       end
     end
   end

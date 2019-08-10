@@ -10,14 +10,10 @@ context "Named Parameters" do
 
   context "Parameter is recorded" do
     context "blk" do
-      param = invocation.parameters[0]
-
-      test "Name" do
-        assert(param.name == :blk)
-      end
+      value = invocation.parameters[:blk]
 
       test "Value" do
-        assert(param.value == blk)
+        assert(value == blk)
       end
     end
   end

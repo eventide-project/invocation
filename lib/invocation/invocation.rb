@@ -18,14 +18,11 @@ class Invocation
 
     parameter_values = parameter_names.map { |n| bndg.local_variable_get(n) }
 
-    params = []
+    params = {}
     parameter_names.each_with_index do |n, i|
-      parameter = Parameter.new(n, parameter_values[i])
-      params << parameter
+      params[n] = parameter_values[i]
     end
 
     new(method_name, params)
   end
-
-  Parameter = Struct.new(:name, :value)
 end
