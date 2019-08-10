@@ -17,20 +17,10 @@ invocation = subject.some_method(11, 111)
 invocation.method_name
 # => :some_method
 
-param_1 = invocation.parameters[0]
-
-param_1.name
-# => :some_parameter
-
-param_1.value
+invocation.parameters[:some_parameter]
 # => 11
 
-param_2 = invocation.parameters[1]
-
-param_2.name
-# => :some_other_parameter
-
-param_2.value
+invocation.parameters[:some_other_parameter]
 # => 111
 ```
 
@@ -52,11 +42,7 @@ It has two attributes:
 - `method_name`
 - `parameters`
 
-The `parameters` attribute is an array of `Invocation::Parameter` structs.
-
-The `Parameter` struct has two attributes:
-- `name`
-- `value`
+The `parameters` attribute is a hash of the form `parameter_name => parameter_value`.
 
 ## Uses
 
