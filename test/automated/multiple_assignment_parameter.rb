@@ -1,7 +1,7 @@
 require_relative 'automated_init'
 
 context "Splat Parameter" do
-  invocation = Invocation::Controls::SplatParameter.example(11, 111)
+  invocation = Invocation::Controls::MultipleAssignmentParameter.example(11, 111)
 
   test "Method name is recorded" do
     assert(invocation.method_name == :some_method)
