@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.name = 'evt-invocation'
   s.summary = "Extract information about a method's invocation including the method name, parameter names, and parameter values"
-  s.version = '1.2.0.0'
+  s.version = '2.2.0.0'
   s.description = ' '
 
   s.authors = ['The Eventide Project']
