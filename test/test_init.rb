@@ -15,7 +15,10 @@ puts RUBY_DESCRIPTION
 require_relative '../init.rb'
 
 require 'test_bench'; TestBench.activate
-require 'pp'
-require 'securerandom'
+
+filename = File.join(__dir__, "#{RUBY_ENGINE}.rb")
+if File.exist?(filename)
+  require filename
+end
 
 require 'invocation/controls'
