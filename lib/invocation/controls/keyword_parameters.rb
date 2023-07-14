@@ -1,6 +1,6 @@
 class Invocation
   module Controls
-    module NamedParameters
+    module KeywordParameters
       def self.example(some_parameter:, some_other_parameter:)
         subject = Example.new
         subject.some_method(some_parameter: some_parameter, some_other_parameter: some_other_parameter)

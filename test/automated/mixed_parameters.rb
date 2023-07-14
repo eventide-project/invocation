@@ -8,41 +8,41 @@ context "Mixed Parameters" do
     assert(invocation.method_name == :some_method)
   end
 
-  context "Parameters are recorded" do
-    context "some_parameter" do
-      value = invocation.parameters[:some_parameter]
+  context "Arguments are recorded" do
+    context "Positional" do
+      value = invocation.arguments[:some_parameter]
 
       test "Value" do
         assert(value == 11)
       end
     end
 
-    context "splat parameters" do
-      value = invocation.parameters[:parameters]
+    context "Multiple Assignment Positional" do
+      value = invocation.arguments[:parameters]
 
       test "Value" do
         assert(value == [1111, 11111])
       end
     end
 
-    context "some_other_parameter" do
-      value = invocation.parameters[:some_other_parameter]
+    context "Keyword" do
+      value = invocation.arguments[:some_other_parameter]
 
       test "Value" do
         assert(value == 111)
       end
     end
 
-    context "double splat parameters" do
-      value = invocation.parameters[:named_parameters]
+    context "Multiple Assignment Keyword Parameters" do
+      value = invocation.arguments[:keyword_parameters]
 
       test "Value" do
         assert(value == { yet_another_parameter: 1111, additional_parameter: 11111 })
       end
     end
 
-    context "blk" do
-      value = invocation.parameters[:blk]
+    context "Block" do
+      value = invocation.arguments[:block]
 
       test "Value" do
         assert(value == blk)

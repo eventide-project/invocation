@@ -1,6 +1,6 @@
 class Invocation
   module Controls
-    module MultipleAssignmentNamedParameter
+    module MultipleAssignmentKeywordParameter
       def self.example(**parameters)
         subject = Example.new
         subject.some_method(**parameters)

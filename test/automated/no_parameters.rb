@@ -8,7 +8,7 @@ context "No Parameters" do
   end
 
   test "No parameters are recorded" do
-    assert(invocation.parameters.empty?)
+    assert(invocation.arguments.empty?)
   end
 end
 

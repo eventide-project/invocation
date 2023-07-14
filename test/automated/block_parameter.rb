@@ -1,6 +1,6 @@
 require_relative 'automated_init'
 
-context "Named Parameters" do
+context "Block Parameter" do
   blk = proc { }
   invocation = Invocation::Controls::BlockParameter.example(&blk)
 
@@ -8,13 +8,11 @@ context "Named Parameters" do
     assert(invocation.method_name == :some_method)
   end
 
-  context "Parameter is recorded" do
-    context "blk" do
-      value = invocation.parameters[:blk]
+  context "Argument is recorded" do
+    value = invocation.arguments[:block]
 
-      test "Value" do
-        assert(value == blk)
-      end
+    test "Value" do
+      assert(value == blk)
     end
   end
 end

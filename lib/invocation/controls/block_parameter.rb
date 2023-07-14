@@ -1,13 +1,13 @@
 class Invocation
   module Controls
     module BlockParameter
-      def self.example(&blk)
+      def self.example(&block)
         subject = Example.new
-        subject.some_method(&blk)
+        subject.some_method(&block)
       end
 
       class Example
-        def some_method(&blk)
+        def some_method(&block)
           ::Invocation.build(binding)
         end
       end

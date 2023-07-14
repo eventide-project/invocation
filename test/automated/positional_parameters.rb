@@ -7,17 +7,17 @@ context "Positional Parameters" do
     assert(invocation.method_name == :some_method)
   end
 
-  context "Parameters are recorded" do
-    context "some_parameter" do
-      value = invocation.parameters[:some_parameter]
+  context "Arguments are Recorded" do
+    context do
+      value = invocation.arguments[:some_parameter]
 
       test "Value" do
         assert(value == 11)
       end
     end
 
-    context "some_other_parameter" do
-      value = invocation.parameters[:some_other_parameter]
+    context do
+      value = invocation.arguments[:some_other_parameter]
 
       test "Value" do
         assert(value == 111)
