@@ -15,8 +15,6 @@ context "Mixed Parameters" do
     &control_block
   )
 
-  arguments = invocation.arguments
-
   detail "Invocation: #{invocation.pretty_inspect}"
 
   test "Method name is recorded" do
@@ -24,6 +22,8 @@ context "Mixed Parameters" do
   end
 
   context "Arguments" do
+    arguments = invocation.arguments
+
     context "Positional" do
       value = arguments[:some_parameter]
 
