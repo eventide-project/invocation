@@ -1,7 +1,3 @@
 require 'invocation/controls/no_parameters'
-require 'invocation/controls/positional_parameters'
-require 'invocation/controls/keyword_parameters'
-require 'invocation/controls/block_parameter'
-require 'invocation/controls/multiple_assignment_parameter'
-require 'invocation/controls/multiple_assignment_keyword_parameter'
 require 'invocation/controls/mixed_parameters'
+require 'invocation/controls/ignored_parameters'
