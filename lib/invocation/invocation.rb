@@ -1,10 +1,10 @@
 class Invocation
   attr_reader :method_name
-  attr_reader :parameters
+  attr_reader :arguments
 
-  def initialize(method_name, parameters)
+  def initialize(method_name, arguments)
     @method_name = method_name
-    @parameters = parameters
+    @arguments = arguments
   end
 
   def self.build(bndg)
@@ -16,11 +16,11 @@ class Invocation
     parameters = mthd.parameters
     parameter_names = parameters.map { |p| p[1] }
 
-    parameter_values = parameter_names.map { |n| bndg.local_variable_get(n) }
+    argument_values = parameter_names.map { |n| bndg.local_variable_get(n) }
 
     params = {}
     parameter_names.each_with_index do |n, i|
-      params[n] = parameter_values[i]
+      params[n] = argument_values[i]
     end
 
     new(method_name, params)

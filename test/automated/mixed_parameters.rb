@@ -1,51 +1,85 @@
 require_relative 'automated_init'
 
 context "Mixed Parameters" do
-  blk = proc { }
-  invocation = Invocation::Controls::MixedParameters.example(11, 1111, 11111, some_other_parameter: 111, yet_another_parameter: 1111, additional_parameter: 11111, &blk)
+  control_block = proc { }
+
+  invocation = Invocation::Controls::MixedParameters.example(
+    :some_arg,
+    :some_optional_arg,
+    :some_multiple_assignment_arg,
+    :some_other_multiple_assignment_arg,
+    some_keyword_parameter: :some_keyword_arg,
+    some_optional_keyword_parameter: :some_optional_keyword_arg,
+    some_multiple_assignment_keyword_parameter: :some_multiple_assignment_keyword_arg,
+    some_other_multiple_assignment_keyword_parameter: :some_other_multiple_assignment_keyword_arg,
+    &control_block
+  )
+
+  detail "Invocation: #{invocation.pretty_inspect}"
 
   test "Method name is recorded" do
     assert(invocation.method_name == :some_method)
   end
 
-  context "Parameters are recorded" do
-    context "some_parameter" do
-      value = invocation.parameters[:some_parameter]
+  context "Arguments" do
+    arguments = invocation.arguments
+
+    context "Positional" do
+      value = arguments[:some_parameter]
 
       test "Value" do
-        assert(value == 11)
+        assert(value == :some_arg)
       end
     end
 
-    context "splat parameters" do
-      value = invocation.parameters[:parameters]
+    context "Optional Positional" do
+      value = arguments[:some_optional_parameter]
 
       test "Value" do
-        assert(value == [1111, 11111])
+        assert(value == :some_optional_arg)
       end
     end
 
-    context "some_other_parameter" do
-      value = invocation.parameters[:some_other_parameter]
+    context "Multiple Assignment" do
+      value = invocation.arguments[:some_multiple_assignment_parameter]
 
       test "Value" do
-        assert(value == 111)
+        assert(value == [:some_multiple_assignment_arg, :some_other_multiple_assignment_arg])
       end
     end
 
-    context "double splat parameters" do
-      value = invocation.parameters[:named_parameters]
+    context "Keyword" do
+      value = invocation.arguments[:some_keyword_parameter]
 
       test "Value" do
-        assert(value == { yet_another_parameter: 1111, additional_parameter: 11111 })
+        assert(value == :some_keyword_arg)
       end
     end
 
-    context "blk" do
-      value = invocation.parameters[:blk]
+    context "Optional Keyword" do
+      value = invocation.arguments[:some_optional_keyword_parameter]
 
       test "Value" do
-        assert(value == blk)
+        assert(value == :some_optional_keyword_arg)
+      end
+    end
+
+    context "Multiple Assignment Keyword Parameters" do
+      value = invocation.arguments[:some_multiple_assignment_keyword_parameter]
+
+      test "Value" do
+        assert(value == {
+          some_multiple_assignment_keyword_parameter: :some_multiple_assignment_keyword_arg,
+          some_other_multiple_assignment_keyword_parameter: :some_other_multiple_assignment_keyword_arg
+         })
+      end
+    end
+
+    context "Block" do
+      value = invocation.arguments[:some_block]
+
+      test "Value" do
+        assert(value == control_block)
       end
     end
   end
