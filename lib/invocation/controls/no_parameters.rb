@@ -8,7 +8,7 @@ class Invocation
 
       class Example
         def some_method
-          ::Invocation.build(binding)
+          ::Invocation.reflect(binding)
         end
       end
     end

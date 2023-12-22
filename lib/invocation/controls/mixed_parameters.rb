@@ -16,7 +16,7 @@ class Invocation
           **some_multiple_assignment_keyword_parameter,
           &some_block
         )
-          ::Invocation.build(binding)
+          ::Invocation.reflect(binding)
         end
       end
     end

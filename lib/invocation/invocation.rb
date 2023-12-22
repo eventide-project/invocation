@@ -7,7 +7,7 @@ class Invocation
     @arguments = arguments
   end
 
-  def self.build(bndg)
+  def self.reflect(bndg)
     instance = bndg.receiver
     method_name = bndg.eval("__method__")
 
