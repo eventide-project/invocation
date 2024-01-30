@@ -7,7 +7,7 @@ Extract information about a method's invocation including the method name, param
 ``` ruby
 class Example
   def some_method(some_parameter, some_other_parameter)
-    Invocation.build(binding)
+    Invocation.reflect(binding)
   end
 end
 
@@ -30,7 +30,7 @@ A method signature with positional parameters, named parameters, splat parameter
 
 ``` ruby
 def some_method(some_parameter, *parameters, some_other_parameter:, **named_parameters, &blk)
-  ::Invocation.build(binding)
+  ::Invocation.reflect(binding)
 end
 ```
 
